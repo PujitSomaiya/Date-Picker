@@ -44,7 +44,7 @@ dependencies {
     // date picker timeline
     implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
 //    implementation 'com.github.badoualy:datepicker-timeline:c6dcd05737'
-
+    implementation 'com.github.jhonnyx2012:horizontal-picker:1.0.6'
     //timepicker
     implementation 'com.github.michaldrabik:classicmaterialtimepicker:1.1.0'
 }

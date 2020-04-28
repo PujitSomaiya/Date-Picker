@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <com.vivekkaushik.datepicker.DatePickerTimeline
+    <com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
         android:id="@+id/dpDateLine"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,6 +52,7 @@
         app:dateTextColor="@color/colorAccent"
         app:disabledColor="@color/cmtp_blue"
         android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/imgTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDate" />
