@@ -27,11 +27,10 @@ import static androidx.core.util.Preconditions.checkArgument;
 public class DatePickerActivity extends AppCompatActivity {
 
     private DatePickerTimeline dpDateLine;
-    private TextView tvDate,tvTime,tvFrom,tvTo;
+    private TextView tvDate,tvFrom,tvFromm,tvTo,tvToo;
     private Date date;
-    private CmtpTimePickerView cmtpTimePickerView;
     private FragmentManager fragmentManager;
-    private CmtpTimeDialogFragment cmtpTimeDialogFragment;
+    private CmtpTimeDialogFragment cmtpTimeDialogFragment=CmtpTimeDialogFragment.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +48,10 @@ public class DatePickerActivity extends AppCompatActivity {
 
         initListeners();
         datePickerTimeline();
-        cmtpTimePickerView();
     }
 
-    private void cmtpTimePickerView() {
-            cmtpTimePickerView.setOnClickListener(view -> {
 
 
-                cmtpTimeDialogFragment.setOnTime12PickedListener(new OnTime12PickedListener() {
-                    @Override
-                    public void onTimePicked(CmtpTime12 cmtpTime12) {
-                        tvTime.setText(String.valueOf(cmtpTime12));
-                    }
-                });
-                cmtpTimeDialogFragment.show( fragmentManager,"Tag");
-            });
-    }
 
     private void datePickerTimeline() throws ParseException {
         date = (Calendar.getInstance().getTime());
@@ -93,13 +80,26 @@ public class DatePickerActivity extends AppCompatActivity {
     private void initListeners() {
         dpDateLine = findViewById(R.id.dpDateLine);
         tvDate = findViewById(R.id.tvDate);
-        tvTime = findViewById(R.id.tvTime);
+        tvFromm = findViewById(R.id.tvFromm);
+        tvToo = findViewById(R.id.tvToo);
         tvTo = findViewById(R.id.tvTo);
         tvFrom = findViewById(R.id.tvFrom);
-        cmtpTimePickerView=findViewById(R.id.cmtpTimePickerView);
-        CmtpTimeDialogFragment.newInstance();
+        CmtpTimePickerView cmtpTimePickerView = findViewById(R.id.cmtpTimePickerView);
         fragmentManager=this.getSupportFragmentManager();
         cmtpTimeDialogFragment.setInitialTime12(10,10, CmtpTime12.PmAm.AM);
+        tvFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvFrom();
+            }
+        });
+        tvTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvTo();
+            }
+        });
+
     }
     @SuppressLint("RestrictedApi")
     String getDayOfMonthSuffix(final int n) {
@@ -113,5 +113,32 @@ public class DatePickerActivity extends AppCompatActivity {
             case 3:  return "rd";
             default: return "th";
         }
+    }
+
+
+
+    private void tvFrom() {
+
+
+        cmtpTimeDialogFragment.setOnTime12PickedListener(new OnTime12PickedListener() {
+            @Override
+            public void onTimePicked(CmtpTime12 cmtpTime12) {
+                tvFromm.setText(String.valueOf(cmtpTime12)+"      to");
+                tvFrom.setText(String.valueOf(cmtpTime12));
+            }
+        });
+        cmtpTimeDialogFragment.show( fragmentManager,"From");
+    }
+
+    private void tvTo() {
+        cmtpTimeDialogFragment.setInitialTime12(10,10, CmtpTime12.PmAm.AM);
+        cmtpTimeDialogFragment.setOnTime12PickedListener(new OnTime12PickedListener() {
+            @Override
+            public void onTimePicked(CmtpTime12 cmtpTime12) {
+                tvToo.setText(String.valueOf(cmtpTime12));
+                tvTo.setText(String.valueOf(cmtpTime12));
+            }
+        });
+        cmtpTimeDialogFragment.show( fragmentManager,"T0");
     }
 }
