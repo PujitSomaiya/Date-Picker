@@ -42,20 +42,44 @@
         app:layout_constraintStart_toEndOf="@id/tvFromm"
         app:layout_constraintTop_toTopOf="parent"
         />
-
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLeft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:src="@drawable/ic_chevron_left_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintEnd_toStartOf="@id/tvMonths"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvMonths"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintStart_toEndOf="@id/imgLeft"
+        app:layout_constraintEnd_toStartOf="@id/imgRight"
+        />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgRight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_right_black_24dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toEndOf="@id/tvMonths"
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
     <com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
         android:id="@+id/dpDateLine"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:dayTextColor="@color/colorPrimaryDark"
-        app:monthTextColor="@color/colorPrimary"
-        app:dateTextColor="@color/colorAccent"
-        app:disabledColor="@color/cmtp_blue"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintBottom_toTopOf="@id/imgTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate" />
+        app:layout_constraintTop_toBottomOf="@id/tvMonths" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvFrom"
